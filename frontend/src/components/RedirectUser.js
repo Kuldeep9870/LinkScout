@@ -8,17 +8,15 @@ function RedirectUser() {
     const { shortid } = useParams();
 
     useEffect(() => {
-        console.log("redirect component");
+        console.log("Redirecting...");
         
         const fetchUrlAndRedirect = async () => {
             try {
-                // Replace with your actual API endpoint
-                const response = await axios.get(`http://www.localhost:8000/redirect/${shortid}`);
+                
+                const response = await axios.get(`https://linkscout-j2of.onrender.com/redirect/${shortid}`);
                 const destinationUrl = response.data.redirectURL;
 
                 console.log(shortid);
-                
-                console.log(response);
 
                 window.location.href = destinationUrl;
             } catch (error) {

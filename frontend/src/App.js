@@ -1,22 +1,21 @@
 import './App.css';
-import Home from './components/Home'
-import Login from './components/Login';
-import NoPage from './components/NoPage';
-import About from './components/About';
-import Register from './components/Register';
-import Navbar from './components/Navbar';
+import Home from './components/main/Home'
+import Login from './components/main/Login';
+import About from './components/main/About';
+import Register from './components/main/Register';
+import Navbar from './components/main/Navbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {  useEffect, useState } from 'react';
-import DashBoardNav from './components/DashboardNav';
-import Dashboard from './components/Dashboard';
-import DashboardHome from './components/DashboardHome';
-import Profile from './components/Profile';
+import DashBoardNav from './components/dashboard/DashboardNav';
+import Dashboard from './components/dashboard/Dashboard';
+import DashboardHome from './components/dashboard/DashboardHome';
+import Profile from './components/dashboard/Profile';
 import RedirectUser from './components/RedirectUser';
-import Logout from './components/Logout';
+import Logout from './components/dashboard/Logout';
 import UserContext from './components/functions/UserContext';
 import UserData from './components/functions/UserData';
 import axios from 'axios';
-import Analytics from './components/user/Analytics';
+import Analytics from './components/dashboard/user/Analytics';
 
 
 
@@ -30,7 +29,7 @@ function App() {
         if(localStorage.getItem('token')){
           const token = localStorage.getItem('token');
           //console.log(token)
-          const {data} =await axios.get('http://www.localhost:8000/user/verify',{
+          const {data} =await axios.get('https://linkscout-j2of.onrender.com/user/verify',{
             headers:{
               authorization: `Bearer ${token}`,
             }
@@ -46,13 +45,15 @@ function App() {
           else if(verify){
             setUser(data.user);
             setLoggedIn(true);
+            console.log('Server Connected');
+            
           }
           
           
         }
         else{
           
-          const {data} =await axios.get('http://www.localhost:8000/start')
+          const {data} =await axios.get('https://linkscout-j2of.onrender.com/start')
           if(data.status)
             console.log('Server Connected');
           else{

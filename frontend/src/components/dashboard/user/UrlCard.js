@@ -4,7 +4,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import QrModal from "./QrModal";
 import UpdateModal from './UpdateModal';
-import { handleCopyClick } from "../functions/UserAction";
+import { handleCopyClick } from "../../functions/UserAction";
 import axios from "axios";
 
 function UrlCard({ url, index ,UpdateAfterDeletion}) {
@@ -40,7 +40,7 @@ function UrlCard({ url, index ,UpdateAfterDeletion}) {
     const fetchUrl = async () => {
       try {
         const response = await axios.post(
-          "http://www.localhost:8000/url/update",
+          "https://linkscout-j2of.onrender.com/url/update",
           {
             id:url._id,
             name:name,

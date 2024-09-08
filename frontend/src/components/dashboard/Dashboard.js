@@ -18,7 +18,7 @@ function Dashboard() {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://www.localhost:8000/url/delete/${id}`,
+        `https://linkscout-j2of.onrender.com/url/delete/${id}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +45,7 @@ function Dashboard() {
       
       try {
         const response = await axios.get(
-          "http://www.localhost:8000/url/user-links",
+          "https://linkscout-j2of.onrender.com/url/user-links",
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -57,7 +57,10 @@ function Dashboard() {
 
         setLoading(false);
         seturlDelete(false);
-      } catch (error) {}
+      } catch (error) {
+        console.log('error');
+        
+      }
     };
     fetchUrl();
     

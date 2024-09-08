@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./styles/Profile.css";
-import UserData from './functions/UserData';
+import UserData from '../functions/UserData';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
 
@@ -14,7 +14,7 @@ function Profile() {
   const handlePasswordUpdate = async(form)=>{
     try {
       const response = await axios.post(
-        `http://www.localhost:8000/user/update`,{
+        `https://linkscout-j2of.onrender.com/user/update`,{
           password:form.password
         },
         {

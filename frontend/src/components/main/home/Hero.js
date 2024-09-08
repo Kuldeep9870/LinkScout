@@ -3,8 +3,9 @@ import { IoIosLink } from "react-icons/io";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi2";
 import { FaRegCopy } from "react-icons/fa";
 import axios from "axios";
-import UserContext from "../functions/UserContext";
+import UserContext from "../../functions/UserContext";
 import isUrl from "is-url";
+import { handleCopyClick } from "../../functions/UserAction";
 
 import "../styles/Hero.css";
 import { Link } from "react-router-dom";
@@ -24,7 +25,7 @@ function Hero() {
     }
     
     const { data } = await axios.post(
-      "http://www.localhost:8000/temp",
+      "https://linkscout-j2of.onrender.com/temp",
       {
         //body
         url: link,
@@ -41,15 +42,7 @@ function Hero() {
     setLinkNum(linknum - 1);
   }
 
-  const handleCopyClick = async () => {
-    try {
-      await window.navigator.clipboard.writeText(redirectURl);
-      alert("Copied to clipboard!");
-    } catch (err) {
-      console.error("Unable to copy to clipboard.", err);
-      alert("Copy to clipboard failed.");
-    }
-  };
+
   return (
     <div className="hero">
       <h1 className="hero-head">Shorten Your Looong Links :)</h1>
@@ -87,7 +80,7 @@ function Hero() {
           {show && linknum ? (
             <div className="result-container">
               <div className="result-link">{redirectURl}</div>
-              <button onClick={handleCopyClick}>
+              <button onClick={()=>{handleCopyClick(redirectURl)}}>
                 <FaRegCopy size={12} />
               </button>
             </div>

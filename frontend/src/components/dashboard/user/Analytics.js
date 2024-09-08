@@ -34,7 +34,7 @@ function Analytics() {
     const fetchAnalytics = async () => {
       try {
         const response = await axios.get(
-          `http://www.localhost:8000/url/analytics/${shortid}`,
+          `https://linkscout-j2of.onrender.com/url/analytics/${shortid}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,

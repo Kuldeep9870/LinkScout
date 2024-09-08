@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react'
 import './styles/DashboardHome.css';
 import { FaRegCopy } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
-import UserData from './functions/UserData';
+import UserData from '../functions/UserData';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
-import homeImage from '../assests/home-image.svg'
+import homeImage from '../../assests/home-image.svg'
 import isUrl from 'is-url';
+import {ImageDownload,handleCopyClick} from '../functions/UserAction'
 
 function DashboardHome() {
     const {user} = useContext(UserData);
@@ -19,7 +20,7 @@ function DashboardHome() {
 
     const handleUrl =async (form)=>{
         try {
-          const response =await axios.post('http://www.localhost:8000/url',form,{
+          const response =await axios.post('https://linkscout-j2of.onrender.com/url',form,{
             headers:{
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -57,18 +58,7 @@ function DashboardHome() {
         }
         
     };
-    const handleCopyClick = async (text) => {
-        try {
-            await window.navigator.clipboard.writeText(text);
-            alert("Copied to clipboard!");
-        } catch (err) {
-            console.error(
-                "Unable to copy to clipboard.",
-                err
-            );
-            alert("Copy to clipboard failed.");
-        }
-    };
+    
 
 
   return (
@@ -134,7 +124,7 @@ function DashboardHome() {
                         </div>
                         <div className='qr-result'>
                             <img className='qr' src={UrlData.qrImageUrl} alt='qr-image'/>
-                            <div className='qr-down'>Download <IoMdDownload /></div>
+                            <div className='qr-down' onClick={()=>{ImageDownload(UrlData.qrImageUrl,UrlData.shortId)}}>Download <IoMdDownload /></div>
                         </div>
                     </div>
                 </div>

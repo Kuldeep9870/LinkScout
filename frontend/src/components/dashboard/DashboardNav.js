@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './styles/Navbar.css'
+import '../styles/Navbar.css'
 import { LuMenu } from "react-icons/lu";
 import { MdOutlineClose } from "react-icons/md";
-import logo from '../assests/logo.png'
+import logo from '../../assests/logo.png'
 import { Link, Outlet } from 'react-router-dom';
 
 

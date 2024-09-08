@@ -1,7 +1,8 @@
 import React from 'react'
 import '../styles/Footer.css';
 import { FaArrowRight } from "react-icons/fa";
-import logo from '../../assests/logo.png'
+import logo from '../../../assests/logo.png'
+import { Link } from 'react-router-dom';
 
 
 function Footer() {
@@ -15,7 +16,7 @@ function Footer() {
             Knowing how your clicks and scans are performing should be as easy as making them. Track, analyze, and optimize all your connections in one place.
             </div>
             <div className='footer-button'>
-                 Get Started For Free <FaArrowRight />
+                 <Link to={'/register'}>Get Started For Free <FaArrowRight /></Link>
             </div>
         </div>
         <div className='footer-divider'>

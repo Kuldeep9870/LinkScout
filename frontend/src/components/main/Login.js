@@ -1,11 +1,11 @@
 import React, { useState,useContext } from 'react';
 import './styles/Login.css';
-import logo from '../assests/logo.png';
+import logo from '../../assests/logo.png';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import UserContext from './functions/UserContext';
-import UserData from './functions/UserData';
+import UserContext from '../functions/UserContext';
+import UserData from '../functions/UserData';
 
 function Login() {
   const {setLoggedIn} = useContext(UserContext);
@@ -18,7 +18,7 @@ function Login() {
   const handleLogin =async (form)=>{
     let checkAuth;
     try {
-      const result =await axios.post('http://www.localhost:8000/user/login',form,{
+      const result =await axios.post('https://linkscout-j2of.onrender.com/user/login',form,{
         headers:{
             'Content-Type': 'application/json'
           }
